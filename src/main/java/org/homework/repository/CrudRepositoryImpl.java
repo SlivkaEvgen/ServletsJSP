@@ -24,8 +24,7 @@ import java.util.stream.IntStream;
 class CrudRepositoryImpl<T extends BaseModel<ID>, ID> implements Closeable, Serializable, CrudRepository<T, ID> {
 
     private static final long serialVersionUID = 10000000025L;
-
-//    @Getter(AccessLevel.PROTECTED)
+    //    @Getter(AccessLevel.PROTECTED)
     private final Connection connection;
     private final ObjectMapper mapper;
     private final Class<T> modelClass;

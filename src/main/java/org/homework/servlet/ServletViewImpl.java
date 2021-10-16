@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 import org.homework.controller.interfaces.Controller;
 import org.homework.controller.ControllerFactory;
 import org.homework.model.BaseModel;
+import org.homework.servlet.interfaces.ServletView;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Locale;
 import java.util.Optional;
 
-public class CrudViewImpl<T extends BaseModel<ID>, ID> extends HttpServlet implements CrudView<T, ID> {
+public class ServletViewImpl<T extends BaseModel<ID>, ID> extends HttpServlet implements ServletView<T, ID> {
 
     private static final long serialVersionUID = 10000000066L;
     private final Class<T> classModel;
     private final Controller<T, ID> controller;
     private T t;
 
-    public CrudViewImpl(Class<T> classModel) {
+    public ServletViewImpl(Class<T> classModel) {
         this.classModel = classModel;
         controller = ControllerFactory.of(classModel);
     }

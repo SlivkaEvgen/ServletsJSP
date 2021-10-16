@@ -1,9 +1,8 @@
 package org.homework.servlet.project;
 
-import lombok.SneakyThrows;
-import org.homework.controller.interfaces.ProjectController;
-import org.homework.controller.ProjectControllerImpl;
 import org.homework.model.Project;
+import org.homework.servlet.interfaces.ProjectView;
+import org.homework.servlet.ProjectViewImplServlet;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,13 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 public class ProjectListWithDateServlet extends HttpServlet {
 
     private static final long serialVersionUID = 10000000016L;
-    private final ProjectController controller = new ProjectControllerImpl(Project.class);
+    private final ProjectView projectView = new ProjectViewImplServlet(Project.class);
 
-    @SneakyThrows
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        req.setAttribute("projectsWithDate", controller.getListProjectsWithDate());
-        req.getServletContext().getRequestDispatcher("/WEB-INF/view/project/projectListWithDateView.jsp")
-                .forward(req, resp);
+        projectView.projectWithDateGet(req, resp);
     }
 }

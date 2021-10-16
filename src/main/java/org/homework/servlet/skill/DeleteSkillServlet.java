@@ -1,8 +1,7 @@
 package org.homework.servlet.skill;
 
 import org.homework.model.Skill;
-import org.homework.servlet.CrudView;
-import org.homework.servlet.ViewFactory;
+import org.homework.servlet.SkillViewImplServlet;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 public class DeleteSkillServlet extends HttpServlet {
 
     private static final long serialVersionUID = 10000000015L;
-    private final CrudView<Skill, Long> CRUD_VIEW = ViewFactory.of(Skill.class);
+    private final SkillViewImplServlet skillView = new SkillViewImplServlet(Skill.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        CRUD_VIEW.delete(req, resp);
+        skillView.delete(req, resp);
     }
 }

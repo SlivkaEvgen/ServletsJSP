@@ -1,4 +1,4 @@
-package org.homework.servlet;
+package org.homework.servlet.interfaces;
 
 import org.homework.model.BaseModel;
 
@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
-public interface CrudView<T extends BaseModel<ID>, ID> {
+public interface ServletView<T extends BaseModel<ID>, ID> {
 
     void addNew(HttpServletRequest req, HttpServletResponse resp);
 
